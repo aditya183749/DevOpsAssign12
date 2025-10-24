@@ -1,0 +1,40 @@
+# Python / Django
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+*.sqlite3
+env/
+venv/
+.env
+
+# Django static / media
+staticfiles/
+media/
+
+# Logs
+*.log
+
+# VS Code / IDEs
+.vscode/
+.idea/
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+.terraform.lock.hcl
+*.zip   # ignore Terraform provider zips
+terraform_1.6.0_linux_amd64.zip
+
+# Docker
+*.tar
+docker-compose.override.yml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Secrets / keys
+*.pem
