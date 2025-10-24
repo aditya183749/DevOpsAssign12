@@ -140,12 +140,10 @@ Note: Some of these file weren't pushed due to secutiry concerns (ex- terraform-
 
 ### Bootstrap Everything:
 bash
-# Clone repository
-git clone https://github.com/bhavesh230904/DevOps_Assignment.git
 cd DevOps_Assignment
 
 # Checkout your branch
-git checkout ITA700
+git checkout ITA713
 
 # Configure AWS credentials
 aws configure
@@ -156,10 +154,10 @@ chmod +x scripts/bootstrap.sh
 
 
 ### Access Points:
-- *Application*: http://52.71.195.227:8000
+- *Application*: http://52.198.76.54:8000
 - *Login Credentials*: 
-  - Username: ITA735
-  - Password: 2022PE0540
+  - Username: ITA713
+  - Password: 2022PE0488
 
 ## Manual Deployment Steps
 
@@ -189,7 +187,7 @@ ansible-playbook -i inventory.ini deploy_stack.yml
 
 ### 3. Run Database Migrations:
 bash
-ssh -i terraform-key.pem ubuntu@52.71.195.227
+ssh -i terraform-key.pem ubuntu@52.198.76.54
 docker ps  # Find web container ID
 docker exec -it CONTAINER_ID python manage.py migrate
 exit
@@ -214,7 +212,7 @@ Table: login
 
 ### GitHub Actions Workflow
 yaml
-Trigger: Push to ITA735 branch
+Trigger: Push to ITA713 branch
 Steps:
   1. Configure AWS credentials
   2. Run Terraform to provision infrastructure
@@ -227,7 +225,7 @@ Steps:
 ## Docker Services
 
 ### Web Service (Django)
-- *Image*: bhavesh230904/devops-web:latest
+- *Image*: aditya200412/devops-web:latest
 - *Replicas*: 2
 - *Port*: 8000
 - *Network*: Overlay network (app-network)
@@ -256,7 +254,7 @@ Tests include:
 
 ### Check Service Status:
 bash
-ssh -i terraform-key.pem ubuntu@52.71.195.227
+ssh -i terraform-key.pem ubuntu@52.198.76.54
 docker service ls
 docker service ps devops-app_web
 docker service logs devops-app_web
